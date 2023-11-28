@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            cursor: none;
+        }
+
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            z-index: 2000;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 0, 0, 0.317);
+            border-radius: 50%;
+            opacity: 0.7;
+            user-select: none;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .box {
+            height: 50px;
+            width: 50px;
+            background-color: rgb(206, 76, 76);
+            border: 5px solid white;
+        }
+
+        html,
+        body {
+            background-color: rgb(0, 0, 0);
+            height: 100vh;
+            color: white;
+        }
+
+        section {
+            text-align: center;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        button {
+            background: burlywood;
+            padding: 10px 19px;
+            font-size: 21px;
+            border-radius: 34px;
+            outline: none;
+            border: 0;
+            font-weight: 700;
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        h1 {
+            font-size: 113px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        img {
+            position: absolute;
+            border-radius: 8px;
+        }
+
+        .img1 {
+            width: 256px;
+            left: 50px;
+            top: 21%;
+        }
+
+        img.img3 {
+            top: 384px;
+            width: 120px;
+            right: 9%;
+        }
+
+        img.img2 {
+            right: 149px;
+            width: 81px;
+            top: 188px;
+        }
+
+        img.img4 {
+            width: 146px;
+            right: 14%;
+            top: 254px;
+        }
+
+        a.down_button {
+            position: absolute;
+            bottom: 21px;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* scroll trigger */
+        .inner_sec {
+            height: 100vh;
+            background: red;
+        }
+
+        .box1 {
+            width: 100px;
+            position: absolute;
+            height: 100px;
+            border: 18px solid white;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            border-radius: 50%;
+            top: -64%;
+        }
+
+        .box2 {
+            width: 150px;
+            position: absolute;
+            height: 150px;
+            /* border: 18px solid white; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            border-radius: 50%;
+            top: 221px;
+            left: 0;
+        }
+
+        .box3 {
+            width: 150px;
+            position: absolute;
+            height: 150px;
+            /* border: 18px solid white; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            border-radius: 50%;
+            top: -175px;
+            left: 45%;
+        }
+
+        .box1 {
+            background-color: black;
+        }
+
+        .box2 {
+            background-color: black;
+        }
+
+        .box3 {
+            background-color: red;
+        }
+
+        .inner_sec {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* .section3 {
+    height: 100vh;
+    padding: 50px;
+} */
+        .box_slide1 {
+            background: #ffffff21;
+            width: 450px;
+            height: auto;
+            margin: 10px;
+            border: 2px solid white;
+        }
+
+        .section3 {
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 330px 330px 330px 330px 330px 330px 330px;
+            overflow: scroll;
+        }
+
+        /* card */
+        .scroll_card {
+            width: 279vw;
+            height: 100vh;
+            overflow-x: hidden;
+            /* height: auto; */
+            display: flex;
+        }
+    </style>
+</head>
+
+<body style="overflow-x: hidden;">
+    <div class="cursor"></div>
+    <div class="follower"></div>
+    <!-- <section>
+    <div class="container-lg">
+      <div class="row" style="height: 100vh;">
+        
+      </div>
+      <div class="row" style="height: 100vh; padding: 50px 0px;">
+        <div class="col-md-6">
+          <h2>Independent Lodging Focused
+          </h2>
+          <p>One size does not fit all. Most revenue management systems were simply not developed to suit small and independent lodgings, but TakeUp was designed with independent properties in mind. Regardless of the size of the property, all owners and operators can now enjoy advanced technology which was previously only accessible to large, branded locations.</p>
+        </div>
+        <div class="col-md-6">
+          <img  class="image_slide img-fluid" src="./img/4.webp" alt="">
+        </div>
+      </div>
+      
+    </div>
+  </section> -->
+
+    <section>
+        <div class="inner_text">
+
+            <h1>Everthing</h1>
+            <h1>To <button>Book Now → </button> sell</h1>
+            <h1>Everthing</h1>
+
+        </div>
+        <a class="down_button" href="#">Scroll Down →</a>
+        <img class="img1"
+            src="https://media-www.sqspcdn.com/images/pages/tour/overview-ecommerce/store-management-500w.jpg" alt="">
+        <img src="https://assets-global.website-files.com/6515a6d5f30daec433d0abe2/6515a6d5f30daec433d0ac70_wf-app-2-hubspot-c.webp"
+            class="img2" alt="">
+        <img src="https://assets-global.website-files.com/6515a6d5f30daec433d0abe2/6515a6d5f30daec433d0ac6d_wf-app-2-jasper.jpg"
+            class="img3" alt="">
+        <img src="https://assets-global.website-files.com/6515a6d5f30daec433d0abe2/6515a6d5f30daec433d0ac6c_wf-app-2-unsplash.jpg"
+            class="img4" alt="">
+    </section>
+    <div class="section2">
+        <div class="inner_sec">
+            <div class="box1"></div>
+            <h1>Lorem ipsum dolor sit amet.</h1>
+        </div>
+        <div class="inner_sec">
+            <div class="box2"></div>
+            <h1 style="text-align: right;">Lorem ipsum dolor sit amet.</h1>
+
+        </div>
+        <div class="inner_sec" style="background-color: rgb(0, 0, 0);">
+            <div class="box3"></div>
+            <h1 style="color: rgb(255, 255, 255);">Lorem ipsum dolor sit amet.</h1>
+        </div>
+    </div>
+
+
+    <div class="section3">
+        <div class="scroll_card">
+            <div class="box_slide1 slide_b1"></div>
+            <div class="box_slide1 slide_b2"></div>
+            <div class="box_slide1 slide_b3"></div>
+            <div class="box_slide1 slide_b4"></div>
+            <div class="box_slide1 slide_b5"></div>
+            <div class="box_slide1 slide_b6"></div>
+            <div class="box_slide1 slide_b7"></div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
