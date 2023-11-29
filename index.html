@@ -5,210 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        * {
-            cursor: none;
-        }
-
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #fff;
-            z-index: 2000;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(255, 0, 0, 0.317);
-            border-radius: 50%;
-            opacity: 0.7;
-            user-select: none;
-            z-index: 2000;
-            pointer-events: none;
-        }
-
-        .box {
-            height: 50px;
-            width: 50px;
-            background-color: rgb(206, 76, 76);
-            border: 5px solid white;
-        }
-
-        html,
-        body {
-            background-color: rgb(0, 0, 0);
-            height: 100vh;
-            color: white;
-        }
-
-        section {
-            text-align: center;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        button {
-            background: burlywood;
-            padding: 10px 19px;
-            font-size: 21px;
-            border-radius: 34px;
-            outline: none;
-            border: 0;
-            font-weight: 700;
-            display: inline-flex;
-            vertical-align: middle;
-        }
-
-        h1 {
-            font-size: 113px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        img {
-            position: absolute;
-            border-radius: 8px;
-        }
-
-        .img1 {
-            width: 256px;
-            left: 50px;
-            top: 21%;
-        }
-
-        img.img3 {
-            top: 384px;
-            width: 120px;
-            right: 9%;
-        }
-
-        img.img2 {
-            right: 149px;
-            width: 81px;
-            top: 188px;
-        }
-
-        img.img4 {
-            width: 146px;
-            right: 14%;
-            top: 254px;
-        }
-
-        a.down_button {
-            position: absolute;
-            bottom: 21px;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* scroll trigger */
-        .inner_sec {
-            height: 100vh;
-            background: red;
-        }
-
-        .box1 {
-            width: 100px;
-            position: absolute;
-            height: 100px;
-            border: 18px solid white;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-            border-radius: 50%;
-            top: -64%;
-        }
-
-        .box2 {
-            width: 150px;
-            position: absolute;
-            height: 150px;
-            /* border: 18px solid white; */
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-            border-radius: 50%;
-            top: 221px;
-            left: 0;
-        }
-
-        .box3 {
-            width: 150px;
-            position: absolute;
-            height: 150px;
-            /* border: 18px solid white; */
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-            border-radius: 50%;
-            top: -175px;
-            left: 45%;
-        }
-
-        .box1 {
-            background-color: black;
-        }
-
-        .box2 {
-            background-color: black;
-        }
-
-        .box3 {
-            background-color: red;
-        }
-
-        .inner_sec {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* .section3 {
-    height: 100vh;
-    padding: 50px;
-} */
-        .box_slide1 {
-            background: #ffffff21;
-            width: 450px;
-            height: auto;
-            margin: 10px;
-            border: 2px solid white;
-        }
-
-        .section3 {
-            padding: 50px;
-            display: grid;
-            grid-template-columns: 330px 330px 330px 330px 330px 330px 330px;
-            overflow: scroll;
-        }
-
-        /* card */
-        .scroll_card {
-            width: 279vw;
-            height: 100vh;
-            overflow-x: hidden;
-            /* height: auto; */
-            display: flex;
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="overflow-x: hidden;">
     <div class="cursor"></div>
     <div class="follower"></div>
+
+    <div id="loader">
+        <h1>0%</h1>
+    </div>
     <!-- <section>
     <div class="container-lg">
       <div class="row" style="height: 100vh;">
@@ -227,6 +36,7 @@
       
     </div>
   </section> -->
+
 
     <section>
         <div class="inner_text">
@@ -275,7 +85,7 @@
         </div>
     </div>
 
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
     <script src="./index.js"></script>
