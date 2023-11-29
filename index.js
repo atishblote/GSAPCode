@@ -1,3 +1,7 @@
+// ?locomotiv
+
+
+
 // cursor
 gsap.set('.follower',{xPercent:-50,yPercent:-50});
 gsap.set('.cursor',{xPercent:-50,yPercent:-50});
@@ -11,6 +15,7 @@ window.addEventListener('mousemove',e => {
 });
 
 
+
 gsap.from(".down_button", {
   duration:2.5,
   ease: "elastic.out(1,0.3)",
@@ -19,7 +24,30 @@ gsap.from(".down_button", {
   yoyo:true
 });
 
+function timeLoader() {
+  let a = 0;
+  const intervalId = setInterval(function() {
+    if (a <= 100) {
+      a = a + Math.floor(Math.random() * 20);
+      document.querySelector('#loader h1').innerHTML = a + "%";
+      console.log(a);
+    } else {
+      a = 100;
+      document.querySelector('#loader h1').innerHTML = a + "%";
+      clearInterval(intervalId); // Use clearInterval to stop the interval when a is 100
+    }
+    a++;
+  }, 80);
+}
+
 let tl = gsap.timeline()
+
+tl.to('#loader',{
+  top: "-100%",
+  delay:1,
+  duration: 1,
+  onStart: timeLoader()
+})
 
 tl.from('.img2,.img3,.img4,.img5',{
   scale:1.1,
@@ -29,7 +57,7 @@ tl.from('.img2,.img3,.img4,.img5',{
   duration: 0.8
 })
 
-tl.from("h1",{
+tl.from(".inner_text h1",{
   y:-200,
   opacity: 0,
   stagger: 0
